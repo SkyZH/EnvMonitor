@@ -16,8 +16,10 @@ module.exports = function(config) {
 
     var serialReader = new SerialReader(serialStream, onData);
 
+    var dataCallBack;
+
     function onData(status) {
-        //debug(status);
+        if(dataCallBack) dataCallBack(null, status);
     }
 
     return {
@@ -37,7 +39,9 @@ module.exports = function(config) {
             });
         },
         "get": function(cmd, cb) {
-            serialPort.write(cmd, cb);
+            serialPort.write(cmd, function(err, results) {
+                if(err) cb(err, null); else dataCallBack = cb;
+            });
         }
     };
 };
