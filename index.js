@@ -7,8 +7,9 @@ var CMD = require('./cmd');
 arduino.open(function(err) {
     if(err) debug(err); else {
         debug("device connected");
-        arduino.get(CMD.DHT, function(err, results) {
-
-        });
+        function do_oper() {
+            arduino.get("aA", function(err, results) {});
+        }
+        setInterval(do_oper, 10000);
     }
 });
