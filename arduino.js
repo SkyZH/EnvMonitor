@@ -17,7 +17,7 @@ module.exports = function(config) {
     var serialReader = new SerialReader(serialStream, onData);
 
     function onData(status) {
-        debug(status);
+        //debug(status);
     }
 
     return {
