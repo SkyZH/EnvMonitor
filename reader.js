@@ -42,24 +42,25 @@ function* parser(reader) {
 
 module.exports = function(serialStream, dataCallback) {
     var reader = buffy.createReader();
-    serialStream.pipe(serialReader);
 
     var dataParser = parser(reader);
-    var status = dataParser.next().value();
+    var status = dataParser.next().value;
 
-    serialReader.on("data", function() {
+    onData = function() {
         debug(reader.bytesAhead() + " in buffer");
         while(true) {
             if(status.success) {
                 dataCallback(status);
-                status = dataParser.next().value();
+                status = dataParser.next().value;
             } else {
                 if(reader.bytesAhead() >= status.size) {
-                    status = dataParser.next().value();
+                    status = dataParser.next().value;
                 } else {
                     break;
                 }
             }
         }
-    });
+    }
+    serialStream.pipe(reader);
+    return onData;
 };

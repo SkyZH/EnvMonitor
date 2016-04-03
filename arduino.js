@@ -30,6 +30,7 @@ module.exports = function(config) {
                     debug("device connected");
                     serialPort.on('data', function(data) {
                         serialStream.emit('data', data);
+                        serialReader();
                     });
                     cb(null);
                 }
