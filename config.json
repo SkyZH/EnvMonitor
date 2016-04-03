@@ -1,0 +1,9 @@
+{
+    "arduino": {
+        "serial": {
+            "path": "COM6",
+            "baudrate": 115200,
+            "immediate": false
+        }
+    }
+}

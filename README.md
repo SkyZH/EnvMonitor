@@ -1,2 +1,2 @@
 # EnvMonitor
-Environment Monitor for Ardunino
+Environment Monitor for Arduino

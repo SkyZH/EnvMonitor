@@ -1,0 +1,28 @@
+{
+  "name": "envmonitor",
+  "version": "1.0.0",
+  "description": "Environment Monitor for Arduino",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkyZH/EnvMonitor.git"
+  },
+  "author": "SkyZH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SkyZH/EnvMonitor/issues"
+  },
+  "homepage": "https://github.com/SkyZH/EnvMonitor#readme",
+  "dependencies": {
+    "buffy": "0.0.5",
+    "debug": "^2.2.0",
+    "lodash": "^4.7.0",
+    "serialport": "^2.0.6",
+    "stream": "^0.0.2",
+    "stream-buffers": "^3.0.0"
+  }
+}
