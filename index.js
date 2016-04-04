@@ -10,7 +10,10 @@ arduino.open(function(err) {
         debug("device connected");
         function do_oper() {
             arduino.get("aA", function(err, results) {
-                commit(results);
+                debug(results);
+                commit(results, function(err, res, body) {
+                    debug(body);
+                });
             });
         }
         setInterval(do_oper, 10000);
