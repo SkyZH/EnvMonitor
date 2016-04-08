@@ -27,9 +27,12 @@ function* parser(reader) {
                 "PM01": reader.int16LE(),
                 "PM25": reader.int16LE(),
                 "PM10": reader.int16LE()
-            }
+            };
             debug(result);
         } else if(cmd == CMD.FAILED) {
+            result = {
+                "status": "Failed"
+            };
             reader.skip(size);
         }
         yield {
