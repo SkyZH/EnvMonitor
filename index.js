@@ -9,7 +9,10 @@ arduino.open(function(err) {
     if(err) debug(err); else {
         debug("device connected");
         function do_oper() {
-            arduino.get("aA", function(err, results) {
+            arduino.get("a", function(err, results) {
+                arduino.get("A", function(err, results) {
+                    commit(results);
+                });
                 commit(results);
             });
         }
