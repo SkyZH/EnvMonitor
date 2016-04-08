@@ -11,14 +11,14 @@ arduino.open(function(err) {
         function do_oper() {
             arduino.get("a", function(err, results) {
                 debug(results);
-                arduino.get("A", function(err, results) {
-                    debug(results);
-                    commit(results, function(err, res, body) {
-                        debug(body);
-                    });
-                });
                 commit(results, function(err, res, body) {
                     debug(body);
+                    arduino.get("A", function(err, results) {
+                        debug(results);
+                        commit(results, function(err, res, body) {
+                            debug(body);
+                        });
+                    });
                 });
             });
         }

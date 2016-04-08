@@ -20,6 +20,7 @@ module.exports = function(config) {
 
     function onData(status) {
         if(dataCallBack) dataCallBack(null, status);
+        dataCallBack = null;
     }
 
     return {
