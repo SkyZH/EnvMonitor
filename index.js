@@ -8,20 +8,24 @@ var commit = require('./commit');
 arduino.open(function(err) {
     if(err) debug(err); else {
         debug("device connected");
-        function do_oper() {
+        function do_oper_a() {
             arduino.get("a", function(err, results) {
                 debug(results);
+                setTimeOut(do_oper_A, 10000);
                 commit(results, function(err, res, body) {
                     debug(body);
-                    arduino.get("A", function(err, results) {
-                        debug(results);
-                        commit(results, function(err, res, body) {
-                            debug(body);
-                        });
-                    });
                 });
             });
         }
-        setInterval(do_oper, 10000);
+        function do_oper_A() {
+            arduino.get("A", function(err, results) {
+                debug(results);
+                setTimeOut(do_oper_a, 10000);
+                commit(results, function(err, res, body) {
+                    debug(body);
+                });
+            });
+        }
+        do_oper_a();
     }
 });
