@@ -1,0 +1,7 @@
+{
+  "apps" : [{
+    "name"        : "envmonitor",
+    "script"      : "index.js",
+    "watch"       : true
+  }]
+}

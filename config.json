@@ -1,7 +1,7 @@
 {
     "arduino": {
         "serial": {
-            "path": "/dev/ttyACM0",
+            "path": "/dev/ttyACM1",
             "baudrate": 115200,
             "immediate": false
         }
