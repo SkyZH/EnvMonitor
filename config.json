@@ -1,9 +1,10 @@
 {
     "arduino": {
         "serial": {
-            "path": "/dev/ttyACM1",
-            "baudrate": 115200,
+            "path": "/dev/ttyACM0",
+            "baudrate": 9600,
             "immediate": false
         }
-    }
+    },
+    "url": "https://hack.incredib.link/RtL4cbNB"
 }

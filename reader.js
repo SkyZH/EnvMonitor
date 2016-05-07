@@ -9,6 +9,7 @@ function* parser(reader) {
         cmd = reader.uint8();
         size = reader.uint8();
         yield {"success": false, "size": size};
+        result = {}
         if(cmd == CMD.DHT) {
             result = {
                 "Humdity": reader.float32LE(),
@@ -38,7 +39,8 @@ function* parser(reader) {
         yield {
             "success": true,
             "command": cmd,
-            "result": result
+            "result": result,
+            "size": 0
         };
     }
 }
@@ -58,6 +60,7 @@ module.exports = function(serialStream, dataCallback) {
             } else {
                 if(reader.bytesAhead() >= status.size) {
                     status = dataParser.next().value;
+                    debug("size to recv: " + status.size);
                 } else {
                     break;
                 }

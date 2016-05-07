@@ -35,14 +35,20 @@ module.exports = function(config) {
                         serialStream.emit('data', data);
                         serialReader();
                     });
-                    cb(null);
+                    serialPort.flush(function() {
+                        cb(null);
+                    });
                 }
             });
         },
         "get": function(cmd, cb) {
+            dataCallBack = cb;
             serialPort.write(cmd, function(err, results) {
-                if(err) cb(err, null); else dataCallBack = cb;
+                if(err) cb(err, null);
             });
+        },
+        "flush": function(cb) {
+            serialPort.flush(cb);
         }
     };
 };
